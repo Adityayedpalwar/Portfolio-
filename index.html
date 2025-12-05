@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>My Portfolio</title>
+
+<style>
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#08080c;
+  --glass:rgba(255,255,255,0.07);
+  --accent:#ff2f6f;
+  --text:#f5f5f5;
+  --sub:#9b9b9b;
+}
+body{background:var(--bg);font-family:Arial;color:var(--text);}
+
+/* HEADER */
+header{
+  padding:20px;
+  text-align:center;
+  background:rgba(0,0,0,0.4);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,0.1);
+}
+header h1{color:var(--accent);font-size:2rem;}
+
+/* HERO */
+.hero{
+  height:35vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  font-size:2rem;
+  padding:20px;
+  background:url('BG.png');
+  background-size:80px;
+  animation:moveBG 12s linear infinite;
+}
+@keyframes moveBG{
+  from{background-position:0 50%;}
+  to{background-position:100% 50%;}
+}
+
+/* GRID */
+section{
+  padding:35px 20px;
+}
+section h2{
+  color:var(--accent);
+  margin-bottom:15px;
+  font-size:1.6rem;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+.card{
+  background:var(--glass);
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,0.09);
+  padding-bottom:15px;
+  overflow:hidden;
+  backdrop-filter:blur(14px);
+  transition:0.25s;
+}
+.card:hover{
+  transform:translateY(-6px);
+  border-color:var(--accent);
+}
+.media{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  background:#111;
+}
+.placeholder{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:180px;
+  background:#111;
+  color:var(--sub);
+  font-size:22px;
+}
+.card h3{
+  padding:12px;
+  color:var(--accent);
+  font-size:1rem;
+}
+
+/* MODAL */
+#modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  background:rgba(0,0,0,0.7);
+  backdrop-filter:blur(10px);
+  padding:20px;
+}
+.modal-box{
+  background:var(--glass);
+  border-radius:14px;
+  padding:20px;
+  backdrop-filter:blur(18px);
+  width:90%;
+  max-width:700px;
+}
+.modal-box img,
+.modal-box video{
+  width:100%;
+  max-height:70vh;
+  border-radius:12px;
+  object-fit:contain;
+}
+.close{
+  margin-top:15px;
+  padding:10px 18px;
+  background:var(--accent);
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>My Portfolio</h1>
+</header>
+
+<section class="hero">
+  Designing the Future, One Pixel at a Time
+</section>
+
+<!-- PHOTOS -->
+<section>
+  <h2>Photos</h2>
+  <div class="grid">
+    <div class="card" onclick="openPreview('img','photos/img1.png')">
+      <div class="placeholder">Photo 1</div>
+      <h3>Photo 1</h3>
+    </div>
+
+    <div class="card" onclick="openPreview('img','photos/img2.png')">
+      <div class="placeholder">Photo 2</div>
+      <h3>Photo 2</h3>
+    </div>
+
+    <div class="card" onclick="openPreview('img','photos/img3.png')">
+      <div class="placeholder">Photo 3</div>
+      <h3>Photo 3</h3>
+    </div>
+
+    <div class="card" onclick="openPreview('img','photos/img4.png')">
+      <div class="placeholder">Photo 4</div>
+      <h3>Photo 4</h3>
+    </div>
+
+    <div class="card" onclick="openPreview('img','photos/img5.png')">
+      <div class="placeholder">Photo 5</div>
+      <h3>Photo 5</h3>
+    </div>
+
+   <div class="card" onclick="openPreview('img','photos/img6.png')">
+      <div class="placeholder">Photo 6</div>
+      <h3>Photo 6</h3>
+    </div>
+
+   <div class="card" onclick="openPreview('img','photos/img7.png')">
+      <div class="placeholder">Photo 7</div>
+      <h3>Photo 7</h3>
+    </div>
+
+   <div class="card" onclick="openPreview('img','photos/img8.png')">
+      <div class="placeholder">Photo 8</div>
+      <h3>Photo 8</h3>
+    </div>
+
+   <div class="card" onclick="openPreview('img','photos/img9.png')">
+      <div class="placeholder">Photo 9</div>
+      <h3>Photo 9</h3>
+    </div>
+
+    <div class="card" onclick="openPreview('img','photos/img10.png')">
+      <div class="placeholder">Photo 10</div>
+      <h3>Photo 10</h3>
+    </div>
+
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section>
+  <h2>Videos</h2>
+  <div class="grid">
+    <div class="card" onclick="openPreview('video','videos/vid1.mp4')">
+      <div class="placeholder">Video 1</div>
+      <h3>Video 1</h3>
+    </div>
+
+    <div class="card" onclick="openPreview('video','videos/vid2.mp4')">
+      <div class="placeholder">Video 2</div>
+      <h3>Video 2</h3>
+    </div>
+
+   <div class="card" onclick="openPreview('video','videos/vid3.mp4')">
+      <div class="placeholder">Video 3</div>
+      <h3>Video 3</h3>
+    </div>
+
+    <div class="card" onclick="openPreview('video','videos/vid4.mp4')">
+      <div class="placeholder">Video 4</div>
+      <h3>Video 4</h3>
+    </div>
+
+<div class="card" onclick="openPreview('video','videos/vid5.mp4')">
+      <div class="placeholder">Video 5</div>
+      <h3>Video 5</h3>
+    </div>
+
+<div class="card" onclick="openPreview('video','videos/vid6.mp4')">
+      <div class="placeholder">Video 6</div>
+      <h3>Video 6</h3>
+    </div>
+
+<div class="card" onclick="openPreview('video','videos/vid7.mp4')">
+      <div class="placeholder">Video 7</div>
+      <h3>Video 7</h3>
+    </div>
+
+<div class="card" onclick="openPreview('video','videos/vid8.mp4')">
+      <div class="placeholder">Video 8</div>
+      <h3>Video 8</h3>
+    </div>
+
+<div class="card" onclick="openPreview('video','videos/vid9.mp4')">
+      <div class="placeholder">Video 9</div>
+      <h3>Video 9</h3>
+    </div>
+
+    <div class="card" onclick="openPreview('video','videos/vid10.mp4')">
+      <div class="placeholder">Video 10</div>
+      <h3>Video 10</h3>
+    </div>
+  </div>
+</section>
+
+<!-- POSTERS -->
+<section>
+  <h2>Posters</h2>
+  <div class="grid">
+    <div class="card" onclick="openPreview('img','REPLACE_POSTER_1')">
+      <div class="placeholder">Poster 1</div>
+      <h3>Poster 1</h3>
+    </div>
+
+    <div class="card" onclick="openPreview('img','REPLACE_POSTER_2')">
+      <div class="placeholder">Poster 2</div>
+      <h3>Poster 2</h3>
+    </div>
+  </div>
+</section>
+
+<!-- PPT -->
+<section>
+  <h2>PPT Files</h2>
+  <div class="grid">
+    <div class="card" onclick="alert('PPT cannot be previewed. Replace the link.')">
+      <div class="placeholder">PPT 1</div>
+      <h3>PPT 1</h3>
+    </div>
+
+    <div class="card" onclick="alert('PPT cannot be previewed. Replace the link.')">
+      <div class="placeholder">PPT 2</div>
+      <h3>PPT 2</h3>
+    </div>
+  </div>
+</section>
+
+<!-- DOCS -->
+<section>
+  <h2>Documents</h2>
+  <div class="grid">
+    <div class="card" onclick="alert('DOC cannot be previewed. Replace the link.')">
+      <div class="placeholder">Document 1</div>
+      <h3>Document 1</h3>
+    </div>
+
+    <div class="card" onclick="alert('DOC cannot be previewed. Replace the link.')">
+      <div class="placeholder">Document 2</div>
+      <h3>Document 2</h3>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- MODAL -->
+<div id="modal">
+  <div class="modal-box">
+    <div id="modalContent"></div>
+    <button class="close" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<script>
+function openPreview(type, src){
+  if(src.startsWith("REPLACE")){
+    alert("Add your file link in place of " + src);
+    return;
+  }
+
+  document.getElementById("modal").style.display = "flex";
+
+  if(type === "img"){
+    document.getElementById("modalContent").innerHTML = `<img src="${src}">`;
+  }
+  else if(type === "video"){
+    document.getElementById("modalContent").innerHTML = `<video src="${src}" controls autoplay></video>`;
+  }
+}
+
+function closeModal(){
+  document.getElementById("modal").style.display = "none";
+  document.getElementById("modalContent").innerHTML = "";
+}
+</script>
+
+</body>
+</html>
